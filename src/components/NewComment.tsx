@@ -1,29 +1,13 @@
-import { UserInfoType } from "../types/types"
 import { useState } from "react"
-import { v4 as uuidv4 } from "uuid"
+import { UserInfoType } from "../types/types"
 
 type Props = {
   userInfo: UserInfoType
-  setDB: any
+  onCancel?: any
 }
 
 export default function NewComment(props: Props) {
   const [text, setText] = useState<string>("")
-  const onSend = () => {
-    const newComment = {
-      uuid: uuidv4(),
-      content: text,
-      createdAt: "Just now",
-      score: 0,
-      user: props.userInfo,
-      replies: [],
-    }
-    props.setDB((prev: any) => ({
-      ...prev,
-      comments: [...prev.comments, newComment],
-    }))
-    setText("")
-  }
   return (
     <article
       className="comment-card flex"
@@ -36,9 +20,14 @@ export default function NewComment(props: Props) {
         value={text}
         onChange={e => setText(e.target.value)}
       ></textarea>
-      <button className="btn-primary" onClick={onSend}>
-        Send
-      </button>
+      <div className="new-comment-btn-group">
+        <button className="btn-primary">Send</button>
+        {typeof props.onCancel == "function" && (
+          <button className="btn-primary btn-cancel" onClick={props.onCancel}>
+            Cancel
+          </button>
+        )}
+      </div>
     </article>
   )
 }

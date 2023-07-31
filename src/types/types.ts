@@ -4,6 +4,7 @@ export type UserInfoType = {
 }
 export type CommentPropType = {
   uuid: string
+  parent_uuid?: string
   content: string
   createdAt: string
   score: number

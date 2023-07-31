@@ -116,6 +116,13 @@ p {
           font-size: 1.15rem;
           color: $Darkblue;
         }
+        .you-info {
+          color: white;
+          font-weight: 500;
+          font-size: 14px;
+          padding: 0.1rem 0.25rem;
+          background-color: $moderate-blue;
+        }
         .comment-time {
           color: $GrayishBlue;
         }
@@ -173,4 +180,12 @@ p {
   .comments {
     width: 95%;
   }
+}
+.btn-cancel {
+  background-color: $SoftRed;
+}
+.new-comment-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }

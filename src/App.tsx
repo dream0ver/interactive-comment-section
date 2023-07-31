@@ -10,7 +10,7 @@ function App() {
       {DB.comments.map((comment: any) => (
         <Comment {...comment} currentUser={DB.currentUser} />
       ))}
-      <NewComment userInfo={DB.currentUser} setDB={setDB} />
+      <NewComment userInfo={DB.currentUser} />
     </section>
   )
 }
