@@ -34,6 +34,7 @@ p {
   background-color: $White;
   padding: 1.5rem;
   margin: 1rem 0;
+  display: flex;
 }
 .btn-primary {
   color: $White;
@@ -62,9 +63,6 @@ p {
   border: 1px solid $moderate-blue;
   padding: 1rem;
   font-size: 16px;
-}
-.flex {
-  display: flex;
 }
 .upvote {
   display: flex;
@@ -127,10 +125,6 @@ p {
           color: $GrayishBlue;
         }
       }
-      .actions {
-        display: flex;
-        gap: 1.5rem;
-      }
     }
   }
 }
@@ -188,4 +182,45 @@ p {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+@media (max-width: 600px) {
+  .user-icon {
+    display: none;
+  }
+  .comment-time {
+    font-size: 12px;
+  }
+}
+@media (max-width: 1024px) {
+  .comment-card {
+    flex-direction: column-reverse;
+  }
+  .new-comment-card {
+    flex-direction: column;
+    align-items: flex-end !important;
+    .user-icon {
+      align-self: flex-start;
+    }
+  }
+  .upvote {
+    flex-direction: row;
+    width: 6rem;
+    height: 2.5rem;
+    padding: 0 1rem;
+  }
+  .actions-lg {
+    display: none;
+  }
+  .actions-sm {
+    display: flex;
+  }
+}
+@media (min-width: 1024px) {
+  .actions-lg {
+    display: flex;
+    gap: 1.5rem;
+  }
+  .actions-sm {
+    display: none;
+  }
 }

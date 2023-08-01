@@ -14,7 +14,7 @@ export default function NewComment(props: any) {
   }
   return (
     <article
-      className="comment-card flex"
+      className="comment-card new-comment-card"
       style={{ gap: "1rem", alignItems: "flex-start" }}
     >
       <img className="user-icon" src={currentUser.image} />

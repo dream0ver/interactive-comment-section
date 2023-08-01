@@ -13,10 +13,38 @@ export default function Comment(props: CommentPropType) {
     const { uuid } = props
     setComments(deleteComment(uuid, comments))
   }
+  const getActions = () => {
+    return (
+      <>
+        {props.user.username !== currentUser.username && (
+          <button className="btn-reply" onClick={onReply}>
+            Reply
+          </button>
+        )}
+        {props.user.username === currentUser.username && (
+          <>
+            <button className="btn-delete" onClick={onDelete}>
+              Delete
+            </button>
+            {/* <button className="btn-edit">Edit</button> */}
+          </>
+        )}
+      </>
+    )
+  }
   return (
     <>
-      <article className="comment-card flex comment">
-        <Upvote score={props.score} />
+      <article className="comment-card  comment">
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Upvote score={props.score} />
+          <div className="actions-sm">{getActions()}</div>
+        </div>
         <div className="data">
           <div className="comment-meta">
             <div className="user-info">
@@ -27,21 +55,7 @@ export default function Comment(props: CommentPropType) {
               )}
               <span className="comment-time">{props.createdAt}</span>
             </div>
-            <div className="actions">
-              {props.user.username !== currentUser.username && (
-                <button className="btn-reply" onClick={onReply}>
-                  Reply
-                </button>
-              )}
-              {props.user.username === currentUser.username && (
-                <>
-                  <button className="btn-delete" onClick={onDelete}>
-                    Delete
-                  </button>
-                  {/* <button className="btn-edit">Edit</button> */}
-                </>
-              )}
-            </div>
+            <div className="actions-lg">{getActions()}</div>
           </div>
           <p>{props.content}</p>
         </div>
