@@ -58,5 +58,15 @@
         }
       }
     ]
+  },
+  {
+    "uuid": "a5d5814b-1c74-416f-b8dd-f13df9104967",
+    "content": "Hello World.",
+    "createdAt": "44 Minutes ago",
+    "score": 2,
+    "user": {
+      "image": "./images/avatars/image-juliusomo.png",
+      "username": "juliusomo"
+    }
   }
 ]

@@ -4,12 +4,12 @@ export type UserInfoType = {
 }
 export type CommentPropType = {
   uuid: string
-  parent_uuid?: string[]
   content: string
   createdAt: string
   score: number
   user: UserInfoType
-  replies?: any[]
+  parent_uuid?: string[]
+  replies?: CommentPropType[]
 }
 
 export type UpvotePropType = {

@@ -1,15 +1,17 @@
 import { StateContext } from "../context/StateContext"
 import { CommentPropType } from "../types/types"
+import { deleteNestedComment } from "../util"
 import NewComment from "./NewComment"
 import Upvote from "./Upvote"
 import { useState, useContext } from "react"
 
 export default function Comment(props: CommentPropType) {
-  const { comments, currentUser } = useContext(StateContext)
+  const { comments, currentUser, setComments } = useContext(StateContext)
   const [showInput, setShowInput] = useState<boolean>(false)
   const onReply = () => setShowInput(true)
   const onDelete = () => {
-    console.log(comments)
+    const { uuid, parent_uuid } = props
+    setComments(deleteNestedComment(uuid, parent_uuid, comments))
   }
   return (
     <>
