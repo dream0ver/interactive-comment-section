@@ -1,14 +1,19 @@
 import React, { useState, createContext } from "react"
-import DATA from "./data.json"
+import COMMENTS from "./comments.json"
 export const StateContext = createContext<any>({})
 
 export const StateProvider = ({ children }: { children: React.ReactNode }) => {
-  const [data, setData] = useState<any>(DATA)
+  const [comments, setComments] = useState<any>(COMMENTS)
+  const currentUser = {
+    image: "./images/avatars/image-juliusomo.png",
+    username: "juliusomo",
+  }
   return (
     <StateContext.Provider
       value={{
-        data,
-        setData,
+        comments,
+        setComments,
+        currentUser,
       }}
     >
       {children}

@@ -5,11 +5,11 @@ import Upvote from "./Upvote"
 import { useState, useContext } from "react"
 
 export default function Comment(props: CommentPropType) {
-  const { data } = useContext(StateContext)
+  const { comments, currentUser } = useContext(StateContext)
   const [showInput, setShowInput] = useState<boolean>(false)
   const onReply = () => setShowInput(true)
   const onDelete = () => {
-    console.log(data)
+    console.log(comments)
   }
   return (
     <>
@@ -20,18 +20,18 @@ export default function Comment(props: CommentPropType) {
             <div className="user-info">
               <img className="user-icon" src={props.user.image} />
               <span className="user-name">{props.user.username}</span>
-              {props.user.username == props.currentUser.username && (
+              {props.user.username == currentUser.username && (
                 <span className="you-info">You</span>
               )}
               <span className="comment-time">{props.createdAt}</span>
             </div>
             <div className="actions">
-              {props.user.username !== props.currentUser.username && (
+              {props.user.username !== currentUser.username && (
                 <button className="btn-reply" onClick={onReply}>
                   Reply
                 </button>
               )}
-              {props.user.username === props.currentUser.username && (
+              {props.user.username === currentUser.username && (
                 <>
                   <button className="btn-delete" onClick={onDelete}>
                     Delete
@@ -44,22 +44,13 @@ export default function Comment(props: CommentPropType) {
           <p>{props.content}</p>
         </div>
       </article>
-      {showInput && (
-        <NewComment
-          userInfo={props.currentUser}
-          onCancel={() => setShowInput(false)}
-        />
-      )}
+      {showInput && <NewComment onCancel={() => setShowInput(false)} />}
       {props.replies?.length ? (
         <div className="replies">
           <div className="line"></div>
           <div className="comments">
             {props.replies.map(reply => (
-              <Comment
-                key={reply.uuid}
-                {...reply}
-                currentUser={props.currentUser}
-              />
+              <Comment key={reply.uuid} {...reply} />
             ))}
           </div>
         </div>

@@ -4,17 +4,13 @@ import NewComment from "./components/NewComment"
 import { StateContext } from "./context/StateContext"
 
 function App() {
-  const { data } = useContext(StateContext)
+  const { comments } = useContext(StateContext)
   return (
     <section className="app-container">
-      {data.comments.map((comment: any) => (
-        <Comment
-          key={comment.uuid}
-          {...comment}
-          currentUser={data.currentUser}
-        />
+      {comments.map((comment: any) => (
+        <Comment key={comment.uuid} {...comment} />
       ))}
-      <NewComment userInfo={data.currentUser} />
+      <NewComment />
     </section>
   )
 }

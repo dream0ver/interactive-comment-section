@@ -1,19 +1,15 @@
-import { useState } from "react"
-import { UserInfoType } from "../types/types"
+import { useState, useContext } from "react"
+import { StateContext } from "../context/StateContext"
 
-type Props = {
-  userInfo: UserInfoType
-  onCancel?: any
-}
-
-export default function NewComment(props: Props) {
+export default function NewComment(props: any) {
+  const { currentUser } = useContext(StateContext)
   const [text, setText] = useState<string>("")
   return (
     <article
       className="comment-card flex"
       style={{ gap: "1rem", alignItems: "flex-start" }}
     >
-      <img className="user-icon" src={props.userInfo.image} />
+      <img className="user-icon" src={currentUser.image} />
       <textarea
         placeholder="Add a comment..."
         className="comment-textarea"

@@ -10,7 +10,6 @@ export type CommentPropType = {
   score: number
   user: UserInfoType
   replies?: any[]
-  currentUser: UserInfoType
 }
 
 export type UpvotePropType = {
