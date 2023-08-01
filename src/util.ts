@@ -1,16 +1,33 @@
-export const deleteNestedComment = (target: string, comments: any) => {
+import { v4 as uuid } from "uuid"
+export const deleteComment = (target: string, comments: any) => {
   let result: any = []
   comments.forEach((comment: any) => {
-    if (target !== comment.uuid) {
+    if (target !== comment.uuid)
       result.push(
-        comment.replies.length
-          ? {
+        !comment.replies.length
+          ? comment
+          : {
               ...comment,
-              replies: deleteNestedComment(target, comment.replies),
+              replies: deleteComment(target, comment.replies),
             }
-          : comment
       )
-    }
   })
   return result
+}
+export const addComment = (
+  target: string,
+  content: string,
+  currentUser: any,
+  comments: any
+) => {
+  const newComment = {
+    uuid: uuid(),
+    content,
+    createdAt: "Just Now",
+    score: 0,
+    user: currentUser,
+    replies: [],
+  }
+  if (target == "root") return [...comments, newComment]
+  return comments
 }

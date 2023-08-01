@@ -1,6 +1,6 @@
 import { StateContext } from "../context/StateContext"
 import { CommentPropType } from "../types/types"
-import { deleteNestedComment } from "../util"
+import { deleteComment } from "../util"
 import NewComment from "./NewComment"
 import Upvote from "./Upvote"
 import { useState, useContext } from "react"
@@ -11,7 +11,7 @@ export default function Comment(props: CommentPropType) {
   const onReply = () => setShowInput(true)
   const onDelete = () => {
     const { uuid } = props
-    setComments(deleteNestedComment(uuid, comments))
+    setComments(deleteComment(uuid, comments))
   }
   return (
     <>
@@ -38,7 +38,7 @@ export default function Comment(props: CommentPropType) {
                   <button className="btn-delete" onClick={onDelete}>
                     Delete
                   </button>
-                  <button className="btn-edit">Edit</button>
+                  {/* <button className="btn-edit">Edit</button> */}
                 </>
               )}
             </div>
@@ -46,7 +46,9 @@ export default function Comment(props: CommentPropType) {
           <p>{props.content}</p>
         </div>
       </article>
-      {showInput && <NewComment onCancel={() => setShowInput(false)} />}
+      {showInput && (
+        <NewComment target={props.uuid} callback={() => setShowInput(false)} />
+      )}
       {props.replies?.length ? (
         <div className="replies">
           <div className="line"></div>
