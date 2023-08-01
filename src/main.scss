@@ -192,6 +192,9 @@ p {
   }
 }
 @media (max-width: 1024px) {
+  .app-container {
+    width: 80vw;
+  }
   .comment-card {
     flex-direction: column-reverse;
   }
