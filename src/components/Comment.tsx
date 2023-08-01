@@ -10,8 +10,8 @@ export default function Comment(props: CommentPropType) {
   const [showInput, setShowInput] = useState<boolean>(false)
   const onReply = () => setShowInput(true)
   const onDelete = () => {
-    const { uuid, parent_uuid } = props
-    setComments(deleteNestedComment(uuid, parent_uuid, comments))
+    const { uuid } = props
+    setComments(deleteNestedComment(uuid, comments))
   }
   return (
     <>

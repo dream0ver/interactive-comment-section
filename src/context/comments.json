@@ -1,17 +1,18 @@
 [
   {
     "uuid": "a5d5814b-1c74-416f-b8dd-f13df9104964",
-    "content": "It is important to note that the use of slang and informal language is not appropriate in formal settings. When communicating in a professional environment, it is essential to use proper grammar and vocabulary. This demonstrates respect for the audience and the topic being discussed. Additionally, it is important to avoid using contractions and abbreviations, as they can be seen as unprofessional. By using formal language, individuals can convey their ideas clearly and effectively, while also maintaining a level of professionalism that is expected in many settings. Therefore, it is crucial to be mindful of language choices when communicating in formal situations.",
+    "content": "Comment 1",
     "createdAt": "1 month ago",
     "score": 12,
     "user": {
       "image": "./images/avatars/image-amyrobson.png",
       "username": "amyrobson"
-    }
+    },
+    "replies": []
   },
   {
     "uuid": "203fe9f7-7361-40d2-b2f0-e56ae047c49b",
-    "content": "Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
+    "content": "Comment 2",
     "createdAt": "2 weeks ago",
     "score": 5,
     "user": {
@@ -21,8 +22,7 @@
     "replies": [
       {
         "uuid": "2fe3f6bb-9477-4008-94fa-5a4360633ef9",
-        "parent_uuid": ["203fe9f7-7361-40d2-b2f0-e56ae047c49b"],
-        "content": "If you're still new, I'd recommend focusing on the fundamentals of HTML, CSS, and JS before considering React. It's very tempting to jump ahead but lay a solid foundation first.",
+        "content": "Comment 3",
         "createdAt": "1 week ago",
         "score": 4,
         "user": {
@@ -32,41 +32,39 @@
         "replies": [
           {
             "uuid": "d1e66fa4-5907-441f-88fd-e4f65b5fbad7",
-            "parent_uuid": [
-              "203fe9f7-7361-40d2-b2f0-e56ae047c49b",
-              "2fe3f6bb-9477-4008-94fa-5a4360633ef9"
-            ],
-            "content": "Hello ramsesmiron how are you.",
+            "content": "Comment 4",
             "createdAt": " 45 Minutes ago",
             "score": 21,
             "user": {
               "image": "./images/avatars/image-juliusomo.png",
               "username": "juliusomo"
-            }
+            },
+            "replies": []
           }
         ]
       },
       {
         "uuid": "d1e66fa4-5907-441f-88fd-e4f65b5fbad5",
-        "parent_uuid": ["203fe9f7-7361-40d2-b2f0-e56ae047c49b"],
-        "content": "I couldn't agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant.",
+        "content": "Comment 5",
         "createdAt": "2 days ago",
         "score": 2,
         "user": {
           "image": "./images/avatars/image-juliusomo.png",
           "username": "juliusomo"
-        }
+        },
+        "replies": []
       }
     ]
   },
   {
     "uuid": "a5d5814b-1c74-416f-b8dd-f13df9104967",
-    "content": "Hello World.",
+    "content": "Comment 6",
     "createdAt": "44 Minutes ago",
     "score": 2,
     "user": {
       "image": "./images/avatars/image-juliusomo.png",
       "username": "juliusomo"
-    }
+    },
+    "replies": []
   }
 ]
