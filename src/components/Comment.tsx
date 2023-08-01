@@ -1,11 +1,16 @@
+import { StateContext } from "../context/StateContext"
 import { CommentPropType } from "../types/types"
 import NewComment from "./NewComment"
 import Upvote from "./Upvote"
-import { useState } from "react"
+import { useState, useContext } from "react"
 
 export default function Comment(props: CommentPropType) {
+  const { data } = useContext(StateContext)
   const [showInput, setShowInput] = useState<boolean>(false)
   const onReply = () => setShowInput(true)
+  const onDelete = () => {
+    console.log(data)
+  }
   return (
     <>
       <article className="comment-card flex comment">
@@ -26,12 +31,14 @@ export default function Comment(props: CommentPropType) {
                   Reply
                 </button>
               )}
-              {/* {props.user.username === props.currentUser.username && (
+              {props.user.username === props.currentUser.username && (
                 <>
-                  <button className="btn-delete">Delete</button>
+                  <button className="btn-delete" onClick={onDelete}>
+                    Delete
+                  </button>
                   <button className="btn-edit">Edit</button>
                 </>
-              )} */}
+              )}
             </div>
           </div>
           <p>{props.content}</p>
@@ -48,7 +55,11 @@ export default function Comment(props: CommentPropType) {
           <div className="line"></div>
           <div className="comments">
             {props.replies.map(reply => (
-              <Comment {...reply} currentUser={props.currentUser} />
+              <Comment
+                key={reply.uuid}
+                {...reply}
+                currentUser={props.currentUser}
+              />
             ))}
           </div>
         </div>
