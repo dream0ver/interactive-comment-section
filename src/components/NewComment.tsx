@@ -6,9 +6,7 @@ export default function NewComment(props: any) {
   const { currentUser, comments, setComments } = useContext(StateContext)
   const [text, setText] = useState<string>("")
   const onSend = () => {
-    setComments(
-      addComment(props?.target || "root", text, currentUser, comments)
-    )
+    setComments(addComment(props?.target, text, currentUser, comments))
     typeof props.callback == "function" && props.callback()
     setText("")
   }
