@@ -1,0 +1,56 @@
+// Sample data - array of ISO date strings
+const isoDates = [
+  "2023-03-15T00:00:00Z",
+  "2022-05-10T00:00:00Z",
+  "2023-01-20T00:00:00Z",
+];
+
+// Parse ISO date strings into Date objects
+const dateObjects = isoDates.map((isoDate) => new Date(isoDate));
+
+// Custom comparison function to sort by year and month
+function compareByYearMonth(a, b) {
+  const yearA = a.getFullYear();
+  const yearB = b.getFullYear();
+  const monthA = a.getMonth();
+  const monthB = b.getMonth();
+
+  if (yearA < yearB) return -1;
+  if (yearA > yearB) return 1;
+  if (monthA < monthB) return -1;
+  if (monthA > monthB) return 1;
+  return 0;
+}
+
+// Sort the Date objects by year and month
+dateObjects.sort(compareByYearMonth);
+
+// Create a new array to store the sorted and filled data
+const sortedAndFilledDates = [];
+
+// Iterate through the sorted Date objects
+for (let i = 0; i < dateObjects.length - 1; i++) {
+  sortedAndFilledDates.push(dateObjects[i]);
+
+  // Add missing month-year combinations
+  let currentYear = dateObjects[i].getFullYear();
+  let currentMonth = dateObjects[i].getMonth();
+
+  while (
+    currentYear !== dateObjects[i + 1].getFullYear() ||
+    currentMonth !== dateObjects[i + 1].getMonth() - 1
+  ) {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    sortedAndFilledDates.push(new Date(currentYear, currentMonth, 1));
+  }
+}
+
+// Add the last Date object
+sortedAndFilledDates.push(dateObjects[dateObjects.length - 1]);
+
+// Now, sortedAndFilledDates contains the sorted and filled date objects
+console.log(sortedAndFilledDates);
